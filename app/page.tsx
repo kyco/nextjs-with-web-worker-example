@@ -15,7 +15,7 @@ import type { SelectChangeEvent } from '@mui/material/Select'
 import calculatePi from '../utils/pi'
 
 export default function Home() {
-  const increment = 100000000
+  const increment = 1000000000
   const [digitsForPi, setDigitsForPi] = useState(5000000000)
   const [isRunningLongProcess, setIsRunningLongProcess] = useState(false)
   const workerRef = useRef<Worker>()
@@ -31,10 +31,10 @@ export default function Home() {
     }
   }, [])
 
-  const getPiWebWorker = useCallback(async () => {
+  const getPiWebWorker = () => {
     setIsRunningLongProcess(true)
     workerRef.current?.postMessage(digitsForPi)
-  }, [])
+  }
 
   const getPi = () => {
     setIsRunningLongProcess(true)
